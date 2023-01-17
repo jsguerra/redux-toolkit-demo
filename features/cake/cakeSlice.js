@@ -25,7 +25,9 @@ const cakeSlice = createSlice({
 
 // createSlide also returns the main reducer function which we can provide
 // to our redux store
+// default export
 module.exports = cakeSlice.reducer;
+// named export
 module.exports.cakeActions = cakeSlice.actions;
 
 /* This slice effectively takes care of defining an action type constant, an action object, an action creator, the switch statements in the reducer and handling immutable updates in the reducer. */
