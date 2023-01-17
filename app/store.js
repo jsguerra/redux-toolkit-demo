@@ -1,6 +1,11 @@
 const configureStore = require("@reduxjs/toolkit").configureStore;
+const { getDefaultMiddleware } = require("@reduxjs/toolkit");
+const reduxLogger = require("redux-logger");
 const cakeReducer = require("../features/cake/cakeSlice");
 const icecreamReducer = require("../features/icecream/icecreamSlice");
+
+// Middleware
+const logger = reduxLogger.createLogger();
 
 // Invoke the function and assign it to a constant
 // takes an object as an argument and specify key called reducer
@@ -11,6 +16,8 @@ const store = configureStore({
     cake: cakeReducer,
     icecream: icecreamReducer,
   },
+  // store adds middleware by default so we append our own
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
 
 module.exports = store;
